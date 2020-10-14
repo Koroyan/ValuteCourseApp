@@ -21,12 +21,12 @@ object RetrofitClient {
 
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(SimpleXmlConverterFactory.create())
-        .baseUrl("http://www.nbg.ge/")
+        .baseUrl(EndPoints.BASE_URL)
         .build()
 
-    private val instance = retrofit.create(Api::class.java)
+    val instance = retrofit.create(Api::class.java)
 
-    fun get(){
+    fun get() {
         instance.resourcesRequest().enqueue(object : Callback<RSS> {
             override fun onResponse(call: Call<RSS>, response: Response<RSS>) {
 
